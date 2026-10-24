@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bullshit Filter — Feral Global Media</title>
+<style>
+  :root{--bg:#0e130c;--panel:#182114;--line:#33452a;--leaf:#9be15d;--gold:#ffb340;--coral:#ff6b57;--paper:#f4f1e6;--muted:#a9bfa0}
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0e130c,#16220f 60%,#0e130c);color:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:880px;margin:0 auto;padding:26px 20px 34px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf)}
+  h1{font-size:clamp(38px,7vw,64px);line-height:.95;margin:12px 0 6px;letter-spacing:-.02em}
+  .tag{font-size:18px;color:var(--muted);line-height:1.5;max-width:680px}
+  .label{background:#241a08;border:1px solid #6b5216;color:#ffd48a;border-radius:14px;padding:10px 14px;font-size:13.5px;line-height:1.45;margin:16px 0}
+  textarea{width:100%;min-height:74px;background:#0a0f08;border:1px solid var(--line);border-radius:16px;color:var(--paper);padding:13px 14px;font-size:16px;font-family:inherit}
+  .samples{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+  .samples button{background:#101709;border:1px solid var(--line);color:var(--paper);border-radius:999px;padding:8px 13px;font-size:13px;cursor:pointer}
+  .samples button:hover{border-color:var(--leaf)}
+  .sieve{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px 16px;margin:10px 0}
+  .sieve h2{margin:0;font-size:18px}
+  .sieve p{margin:4px 0 11px;color:var(--muted);font-size:14px;line-height:1.45}
+  .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .opts button{flex:1;min-width:110px;background:#0a0f08;border:1px solid var(--line);color:var(--paper);border-radius:12px;padding:10px;font-size:14px;font-weight:700;cursor:pointer}
+  .opts button.on[data-v="0"]{background:#5a1710;border-color:var(--coral)}
+  .opts button.on[data-v="1"]{background:#5a4710;border-color:var(--gold)}
+  .opts button.on[data-v="2"]{background:#1d4d1a;border-color:var(--leaf)}
+  .result{margin-top:20px;border-radius:22px;padding:22px;background:#101709;border:1px solid var(--line);text-align:center}
+  .result .emoji{font-size:52px}
+  .result h2{margin:6px 0 2px;font-size:30px}
+  .result .score{color:var(--gold);font-weight:900;font-size:15px;letter-spacing:.06em}
+  .result p{color:var(--muted);line-height:1.5;max-width:560px;margin:8px auto 0}
+  .result .clogs{margin-top:10px;font-size:14px;color:var(--paper)}
+  #copyBtn{margin-top:14px;background:var(--leaf);color:#0e130c;border:none;border-radius:999px;padding:10px 18px;font-weight:900;cursor:pointer}
+  footer{margin-top:20px;color:var(--muted);font-size:13px;line-height:1.6;border-top:1px solid var(--line);padding-top:13px}
+  a{color:var(--leaf)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">💩 Feral Global Media · The Reaction Stream's Home Filter</div>
+  <h1>THE BULLSHIT FILTER</h1>
+  <p class="tag">Type any claim. Pour it through five sieves. Get a Trust Rating. The same filter we run live on stream — and yes, it eats the host's own claims first.</p>
+  <div class="label"><b>Honest label:</b> entertainment &amp; opinion. A Feral rating is not a lab verdict — the lab's tiers live at <a href="https://github.com/jeffgurd888/thet-logos">Nexus Research</a> and are never borrowed here. We rate claims, not people. Ratings are never for sale.</div>
+
+  <textarea id="claim" placeholder="Paste the claim here — an ad, a headline, a miracle cure, a guru's promise…"></textarea>
+  <div class="samples">
+    <button data-preset="host">🥇 Try it: the host eats first (Pelagic's “10× energy” claim)</button>
+    <button data-preset="supp">💊 Try it: miracle supplement ad</button>
+    <button data-preset="energy">🔌 Try it: free-energy video</button>
+  </div>
+
+  <div id="sieves"></div>
+
+  <section class="result" id="result" aria-live="polite">
+    <div class="emoji">🚰</div>
+    <h2>Ready to pour</h2>
+    <div class="score">SCORE — / 10</div>
+    <p>Score each sieve honestly — Flows, Drips, or Clogs — and the Filter issues its rating.</p>
+  </section>
+
+  <footer>
+    The five sieves: <b>Screen</b> (source) · <b>Mesh</b> (evidence) · <b>Trap</b> (incentive) · <b>Rinse</b> (reproduction) · <b>Nose</b> (too-good test). A claim can always be re-poured with receipts — that's the Redemption Round. Back to the <a href="index.html">sandbox</a>.
+  </footer>
+</main>
+<script>
+const SIEVES = [
+  {name:"1 · THE SCREEN — Source", q:"Who said it? Can you find them? Do they exist outside this clip or post?"},
+  {name:"2 · THE MESH — Evidence", q:"Shown, or just said? Is there data, a demo, a document — anything you can touch?"},
+  {name:"3 · THE TRAP — Incentive", q:"Who's selling what? Follow the money and the attention. Checkout link attached? Pour slower."},
+  {name:"4 · THE RINSE — Reproduction", q:"Has anyone else checked it, repeated it, or poured it through their own filter?"},
+  {name:"5 · THE NOSE — Too-Good Test", q:"Does it promise the moon for nothing? Big promise = fine mesh to survive."}
+];
+const scores = [null,null,null,null,null];
+const box = document.getElementById('sieves');
+SIEVES.forEach((s,i)=>{
+  const d = document.createElement('div'); d.className='sieve';
+  d.innerHTML = `<h2>${s.name}</h2><p>${s.q}</p><div class="opts">
+    <button data-v="0">🧱 Clogs · 0</button><button data-v="1">💧 Drips · 1</button><button data-v="2">🌊 Flows · 2</button></div>`;
+  d.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    scores[i]=+b.dataset.v;
+    d.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+    render();
+  }));
+  box.appendChild(d);
+});
+const TIERS = [
+  {min:9, emoji:"💎", name:"CLEAR WATER", desc:"Passed everything. Rare — say so when it happens."},
+  {min:7, emoji:"🥤", name:"DRINKABLE", desc:"Mostly solid, a little froth on top."},
+  {min:5, emoji:"🌫️", name:"MURKY", desc:"Mixed pour — some flows, some clogs. Handle with care."},
+  {min:3, emoji:"🧦", name:"SOCK IN THE PIPE", desc:"Mostly bullshit. Entertainment only — do not swallow."},
+  {min:0, emoji:"💩", name:"FULL SEPTIC", desc:"Pure bullshit. Flush it and wash your hands."}
+];
+function render(){
+  const r = document.getElementById('result');
+  if(scores.some(s=>s===null)){
+    const done = scores.filter(s=>s!==null).length;
+    r.innerHTML = `<div class="emoji">🚰</div><h2>Pouring… ${done} of 5 sieves scored</h2><div class="score">SCORE — / 10</div><p>Keep going — every sieve gets a vote.</p>`;
+    return;
+  }
+  const total = scores.reduce((a,b)=>a+b,0);
+  const t = TIERS.find(x=>total>=x.min);
+  const clogged = SIEVES.filter((s,i)=>scores[i]===0).map(s=>s.name.split('—')[0].trim());
+  const claim = document.getElementById('claim').value.trim();
+  const verdict = `THE BULLSHIT FILTER rates ${claim?'"'+claim.slice(0,140)+'"':"this claim"}: ${t.emoji} ${t.name} (${total}/10)${clogged.length?". Clogged at: "+clogged.join(", "):". No clogs"}. — Feral Global Media (entertainment rating; receipts can raise it)`;
+  r.innerHTML = `<div class="emoji">${t.emoji}</div><h2>${t.name}</h2><div class="score">TRUST RATING · ${total} / 10</div>
+    <p>${t.desc}</p>${clogged.length?`<div class="clogs">🧱 Clogged at: ${clogged.join(" · ")}</div>`:`<div class="clogs">No clogs. Clean pour.</div>`}
+    <button id="copyBtn">📋 Copy the verdict</button>`;
+  document.getElementById('copyBtn').addEventListener('click',()=>{navigator.clipboard && navigator.clipboard.writeText(verdict);});
+}
+const PRESETS = {
+  host:{claim:"Project Pelagic generates 10x more energy than the island consumes (OTEC, solar, wave).", scores:[2,0,1,0,0]},
+  supp:{claim:"This supplement melts 30 lbs in 30 days — doctors are furious, buy in the next 10 minutes!", scores:[0,0,0,0,0]},
+  energy:{claim:"This garage device powers a whole house forever from magnets. Big Energy doesn't want you to know.", scores:[1,0,0,0,0]}
+};
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{
+  const p = PRESETS[b.dataset.preset];
+  document.getElementById('claim').value = p.claim;
+  p.scores.forEach((v,i)=>{
+    scores[i]=v;
+    const btns = box.children[i].querySelectorAll('button');
+    btns.forEach(x=>x.classList.toggle('on',+x.dataset.v===v));
+  });
+  render();
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+}));
+</script>
+</body>
+</html>
