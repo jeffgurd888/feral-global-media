@@ -1,0 +1,33 @@
+# AUDIT — "Orbital Resonances ⇔ Quantum Transitions" (dropped document)
+**Filed 2026-10-24, at Jeff's word. Status: AUDIT COMPLETE. Verdict: RHYME (◐ᴘ), one theorem-grade bridge, NO CLAIM.**
+The document (received 2026-10-24, closes with an outside chatbot's own question — treated as dropped material and audited against the record before engagement, per house protocol). Jeff's order governed the audit: *imagine it in full first, then dissect it in the gauntlet.*
+
+## 1. The claim inventory
+1. Keplerian orbits are energy eigenstates; mean-motion resonances are quantum selection rules (Pauli-like); migration across resonances is stimulated emission, energy leaving as tidal heat / gravitational waves.
+2. Multi-moon systems mirror nucleosynthesis: a binding-curve with an iron-like peak at an optimal moon count; tidal friction as fusion; Roche tearing / ejection as fission and radioactive decay.
+3. The cosmos is thereby a scale-invariant, non-commutative phase-space expression of one algebraic geometry. Gravity plays the strong force's role.
+
+## 2. Imagined in full (the steelman, as ordered)
+The Galilean moons as a spectral series: Io–Europa–Ganymede locked 1:2:4, a chord held for eons; moons occupying resonances like shells, jumping only at an exact angular-momentum price, the jump's energy sweating out as Io's volcanic heat. Systems living nuclear biographies — sparse and silent, clockwork at mid-count, violent when overcrowded, decaying by ejection to a ground state. Gravity as each scale's binding agent, one algebra rerun at every size. As a unifying picture it is coherent, fertile, and honestly beautiful. Beauty noted. The gauntlet follows.
+
+## 3. The gauntlet — verdict by claim
+- **Orbits ↔ eigenstates: ANCHORED (theorem-grade), arrow reversed.** The Kepler problem and the hydrogen atom are the same dynamical system — identical hidden SO(4) symmetry (Runge–Lenz vector; the Fock/Pauli correspondence), and EBK semiclassical quantization of Kepler action–angle variables yields the hydrogen spectrum. The atom inherits Kepler's geometry; moons do not inherit quantum mechanics. Orbital state space is a continuum; resonances are islands in it, not eigenvalues.
+- **Resonances as selection rules: RHYME with a real kernel; the Pauli clause KILLED.** Resonance terms carry strict coupling rules (d'Alembert: definite powers of eccentricity/inclination per resonance order) — a genuine structural rhyme with selection rules. But Pauli exclusion is fermionic antisymmetry (no classical analog), and resonances do not prevent chaos: resonance *overlap* is the standard route *to* chaos (Chirikov criterion), and mean-motion resonances evacuate the Kirkwood gaps.
+- **Migration as stimulated emission: RHYME.** Tidal dissipation is real and resonance-maintained (Io's ~10¹⁴ W volcanic heat flow exists because the Laplace resonance forces its eccentricity; Enceladus likewise). No population inversion, no coherence — dissipation in the laser's coat.
+- **Gravity as the strong force: KILLED as identity.** No confinement, no color charge, no asymptotic freedom — the coupling trends are opposite. Survives only as the metaphor "binding agent of its scale."
+- **Binding curve / iron peak of moon counts: RHYME, unpriced.** No binding-energy-per-moon function exists; nothing peaks. Real kernels inside the poetry: Roche-limit disruption is real, and disrupted moons are a live hypothesis for ring origins.
+- **Tidal ignition as fusion: RHYME, strong anchor.** Tides demonstrably run geology and oceans (Io, Enceladus) with zero fusion. Bookkeeping differs: the energy is paid by orbital/rotational reservoirs, not released from a binding curve.
+- **Ejection as radioactive decay: weak RHYME.** N-body instability times are statistical and decay-law-like (instability time grows roughly exponentially with orbital spacing in Hill units — Chambers-line results; ejection of rogue planets is observed). A statistical rhyme, not a mechanism.
+- **Scale-invariant cosmos / non-commutative orbital phase space: KILLED as stated.** The scales carry different dimensionful physics (ħ is not scale-free; GR, radiation, and material forces enter at their own scales), the orbital spectrum is continuous, and "non-commutative" is undefined here until someone writes an actual deformation quantization of the orbital problem — at which point it would be a new proposal, FRONTIER, not this document's result.
+
+## 4. Placement in the record
+Lineage: the toy atom (RHYME, 2026-10-23) and the fixed periodic-table toy (NO CORRELATION). This document sits at **◐ᴘ**: its physics anchors are real (resonances, tides, the Kepler–hydrogen bridge) and the identifications built on them are rhyme. It derives nothing, predicts nothing yet, and moves no dial: **0/4, NO CLAIM, ToE odds unchanged.** Its closing question — formalize the action-angle ↔ operator mapping? — answers itself: that mapping exists in the classical/semiclassical literature (Delaunay variables, EBK, Weyl quantization); it is the document's one load-bearing wall, and it was built by celestial mechanics long ago.
+
+## 5. Scoped toy — "The EBK Spectrum of the Laplace Chain" (SCOPED, NOT BUILT; priced S)
+**Question.** Take the analogy's strongest wall and compute on it: assign each Galilean moon its Delaunay actions (L = m√(μa), G = L√(1−e²), H = G cos i) from measured (a, e, i, m), convert to EBK quantum numbers J/ħ, and print the table. Add Neptune–Pluto (3:2) as a second case.
+**Expected punchline, stated in advance:** the actions are ~10⁶⁹–10⁷⁰ ħ. The "quantum numbers" of a moon are so large that level spacing is unmeasurably fine and correspondence washout is total — the toy *computes the reason* the rhyme cannot be literal. A result either way: if the table is clean, the toy is a beautiful scale exhibit; it can never become evidence for the document's identities.
+**Deliverable:** one computation (Python, measured inputs cited) + one-page report: per-moon actions, EBK integers, adjacent-level energy spacing vs. the moon's actual tidal throughput, washout ratio.
+**Pre-registered kill:** if any step requires adjusting a constant, choosing a favorable branch, or discarding a moon to make the pattern prettier, the toy is declared numerology and killed on its face — no second run under a friendlier rule.
+**Tier on delivery:** numerical exploration (T4-grade report), filed on the RHYME-TOY shelf. Build only on Jeff's separate word.
+
+*Audit closed. The document is preserved as imagination at full rank; its one true wall is named, and its price of admission to the bench is the toy above, scoped and waiting.*
