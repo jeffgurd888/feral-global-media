@@ -73,7 +73,7 @@ The combustion stage in Section 1 is a design reading, stated as such, and it ca
 
 What I am asking for is the discussion: counterexamples, better readings, the places where this breaks. A hypothesis that cannot be heckled cannot be tested, and a hypothesis that cannot be tested is decoration. This one is offered for testing.
 
+And one practical word. The next step this hypothesis asks for is testing — the inventory rechecked seat by seat, the readings measured against the stone. Donations toward that testing: Cash App — https://cash.app/$Gurd888 ($Gurd888). What is given goes to the work; what the work finds stays public and free, forever.
+
 "If we don't stop worrying about the Almighty dollar, we're not going to change the world!"
 — Caleb Gurd, as remembered by his Dad.
-
---- ARTICLE BODY ENDS ---
