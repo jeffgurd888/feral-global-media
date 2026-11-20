@@ -3,69 +3,485 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Feral Global Media — Untamed Stories. Free Forever.</title>
+<title>Feral Global Media — Feral by Nature. Media by Design.</title>
+<meta name="description" content="Feral Global Media: an independent storytelling studio out of Schoolcraft, Michigan. Local to regional to national to global. Get in where you fit in.">
 <style>
-  :root{--ink:#131a12;--bg:#0e130c;--panel:#182114;--line:#33452a;--leaf:#9be15d;--gold:#ffb340;--coral:#ff6b57;--paper:#f4f1e6;--muted:#a9bfa0}
+  :root{
+    --bg:#06060a; --bg2:#0b0b14; --panel:#10101c; --panel2:#151527;
+    --line:#262640; --ink:#f2f2f8; --muted:#a7a7c2;
+    --acid:#b6ff2e; --acid-dim:#9be15d; --pink:#ff2e88; --red:#ff2222; --gold:#ffb340; --teal:#2ee6c8;
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:linear-gradient(180deg,#0e130c,#16220f 55%,#0e130c);color:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  .wrap{max-width:1060px;margin:0 auto;padding:26px 20px 30px}
-  .eyebrow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf)}
-  .badge{border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--paper)}
-  h1{font-size:clamp(44px,8vw,92px);line-height:.9;margin:16px 0 6px;letter-spacing:-.03em}
-  h1 span{color:var(--leaf)}
-  .tag{font-size:clamp(19px,3vw,28px);font-weight:800;margin:0;color:var(--gold)}
-  .lede{font-size:17px;line-height:1.55;color:var(--muted);max-width:760px}
-  .hero{border-radius:26px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.5);margin:20px 0}
-  .hero img{display:block;width:100%;height:min(520px,70vw);object-fit:cover;object-position:center 58%}
-  .hero figcaption{background:#0a0f08;color:var(--muted);padding:10px 15px;font-size:13px;line-height:1.45}
-  .hero figcaption b{color:var(--paper)}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:18px 0}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}
-  .card h2{margin:0 0 8px;font-size:23px;line-height:1.1}
-  .card p{margin:0;color:var(--muted);line-height:1.5;font-size:15px}
-  .card .k{font-size:12px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--leaf)}
-  .card.wide{grid-column:1/-1}
-  a{color:var(--leaf)}
-  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0}
-  .rule{background:#101709;border:1px dashed #476032;border-radius:22px;padding:18px}
-  .rule h3{margin:0 0 7px;font-size:18px;color:var(--gold)}
-  .rule p{margin:0;color:var(--muted);line-height:1.5;font-size:14.5px}
-  footer{border-top:1px solid var(--line);margin-top:22px;padding-top:14px;color:var(--muted);font-size:13px;line-height:1.6}
-  footer b{color:var(--paper)}
-  @media(max-width:820px){.grid,.rules{grid-template-columns:1fr}}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--acid-dim)}
+  a:hover{color:var(--acid)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+  /* ── Breaking ticker ─────────────────────────────── */
+  .tickerbar{background:var(--red);color:#fff;display:flex;align-items:stretch;overflow:hidden;
+    font-size:13px;font-weight:800;letter-spacing:.04em}
+  .tickerbar .tag{background:#8f0f0f;padding:8px 14px;white-space:nowrap;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px;z-index:2}
+  .ticker-viewport{overflow:hidden;flex:1;display:flex;align-items:center}
+  .ticker-track{display:inline-flex;gap:0;white-space:nowrap;animation:tick 55s linear infinite;padding-left:0}
+  .ticker-track span{padding:0 34px;position:relative}
+  .ticker-track span::after{content:"///";position:absolute;right:8px;color:rgba(255,255,255,.55)}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+  /* ── Masthead ────────────────────────────────────── */
+  header.mast{border-bottom:3px solid var(--acid);background:
+    radial-gradient(900px 300px at 85% -80px, rgba(255,46,136,.20), transparent 60%),
+    radial-gradient(700px 260px at 8% -60px, rgba(182,255,46,.13), transparent 60%), var(--bg2)}
+  .dateline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;
+    padding:10px 0 0;font-size:12.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .dateline b{color:var(--ink)}
+  .wordmark{display:flex;align-items:center;gap:18px;padding:14px 0 6px;flex-wrap:wrap}
+  .wordmark img{width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid var(--acid);
+    box-shadow:0 0 22px rgba(182,255,46,.35)}
+  .wordmark h1{margin:0;font-size:clamp(38px,6.4vw,68px);line-height:.92;letter-spacing:-.02em;font-weight:900}
+  .wordmark h1 .fm{color:var(--acid);text-shadow:0 0 26px rgba(182,255,46,.45)}
+  .wordmark h1 .gm{color:var(--pink)}
+  .wordmark .slogan{font-size:clamp(14px,2vw,18px);color:var(--gold);font-weight:700;letter-spacing:.05em;margin-top:4px}
+  nav.desks{display:flex;flex-wrap:wrap;gap:2px;padding:10px 0 14px}
+  nav.desks a{color:var(--ink);text-decoration:none;font-weight:800;font-size:13.5px;letter-spacing:.07em;
+    text-transform:uppercase;padding:8px 13px;border:1px solid transparent;border-radius:8px}
+  nav.desks a:hover{border-color:var(--line);background:var(--panel);color:var(--acid)}
+  nav.desks a.hot{color:var(--pink)}
+
+  /* ── Hero / top story ────────────────────────────── */
+  .hero{display:grid;grid-template-columns:1.55fr 1fr;gap:0;margin:22px 0;border:1px solid var(--line);
+    border-radius:18px;overflow:hidden;background:var(--panel)}
+  .hero-art{position:relative;min-height:340px}
+  .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .hero-art .livebug{position:absolute;top:14px;left:14px;background:var(--red);color:#fff;font-weight:900;
+    font-size:12px;letter-spacing:.12em;padding:6px 11px;border-radius:6px;display:flex;gap:7px;align-items:center}
+  .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .hero-body{padding:24px 26px}
+  .kicker{font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--pink)}
+  .hero-body h2{font-size:clamp(27px,3.4vw,40px);line-height:1.05;margin:8px 0 10px;letter-spacing:-.01em}
+  .hero-body p{color:var(--muted);line-height:1.55;font-size:15.5px;margin:0 0 12px}
+  .hero-body p b{color:var(--ink)}
+  .quote{border-left:4px solid var(--acid);padding:8px 0 8px 14px;margin:14px 0;font-size:18px;font-weight:800;line-height:1.35}
+  .steps{display:grid;gap:8px;margin:14px 0}
+  .step{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:14px;line-height:1.45}
+  .step b{color:var(--acid);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;display:block}
+  .cta{display:inline-block;background:var(--acid);color:#0a0f02;font-weight:900;text-decoration:none;
+    padding:11px 18px;border-radius:10px;font-size:14.5px;letter-spacing:.02em;margin-top:4px}
+  .cta:hover{background:#cfff6b;color:#0a0f02}
+  .cta.ghost{background:transparent;color:var(--acid);border:1px solid var(--acid);margin-left:8px}
+
+  /* ── Section scaffolding ─────────────────────────── */
+  section.desk{margin:34px 0}
+  .desk-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--line);
+    padding-bottom:8px;margin-bottom:16px;flex-wrap:wrap}
+  .desk-head h2{margin:0;font-size:clamp(23px,3vw,32px);letter-spacing:-.01em;font-weight:900;text-transform:uppercase}
+  .desk-head .stage{color:var(--muted);font-size:13.5px}
+  .desk-head .rule{flex:1}
+  .chip{font-size:11px;font-weight:900;letter-spacing:.1em;padding:4px 9px;border-radius:999px;text-transform:uppercase}
+  .chip.local{background:#12300a;color:var(--acid)}
+  .chip.regional{background:#3a0f2a;color:#ff7ab8}
+  .chip.national{background:#0d2f3a;color:var(--teal)}
+  .chip.global{background:#2e1a4d;color:#c4a6ff}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column}
+  .card:hover{border-color:#3a3a5e}
+  .card .k{font-size:11.5px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--pink);margin-bottom:7px}
+  .card h3{margin:0 0 8px;font-size:20px;line-height:1.15}
+  .card p{margin:0 0 10px;color:var(--muted);line-height:1.52;font-size:14.5px;flex:1}
+  .card .meta{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:9px}
+  .card img.cardart{width:100%;height:170px;object-fit:cover;border-radius:9px;margin-bottom:12px}
+  .card.feature{grid-column:span 2}
+  .status{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:3px 9px}
+
+  /* ── Live desk ───────────────────────────────────── */
+  .livedesk{background:linear-gradient(180deg,#17060f,#0d0d18);border:1px solid #4d1030;border-radius:18px;padding:22px 24px}
+  .livedesk h2{margin:0 0 4px;font-size:26px;display:flex;align-items:center;gap:11px}
+  .livedesk .sub{color:var(--muted);font-size:14.5px;line-height:1.5;margin:0 0 14px;max-width:760px}
+  .livegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .liveitem{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px 15px}
+  .liveitem .t{font-size:11.5px;font-weight:900;letter-spacing:.11em;color:var(--red);text-transform:uppercase}
+  .liveitem h3{margin:5px 0 6px;font-size:16.5px;line-height:1.25}
+  .liveitem p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+  #clockbox{font-variant-numeric:tabular-nums}
+
+  /* ── Broadcast ───────────────────────────────────── */
+  .guide{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .guide th,.guide td{padding:12px 15px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line);vertical-align:top}
+  .guide th{background:var(--panel2);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .guide tr:last-child td{border-bottom:none}
+  .guide td.show{font-weight:800;font-size:15.5px;white-space:nowrap}
+  .guide td p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
+
+  /* ── Thermal time (weather slot) ─────────────────── */
+  .thermal{background:radial-gradient(700px 300px at 90% -60px, rgba(255,179,64,.16), transparent 60%),
+    linear-gradient(180deg,#141020,#0c0c16);border:1px solid #453a17;border-radius:18px;padding:24px 26px;
+    display:grid;grid-template-columns:1fr 1.4fr;gap:22px}
+  .thermal .big{font-size:clamp(44px,6vw,72px);font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--gold)}
+  .thermal .big small{display:block;font-size:15px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+  .thermal p{color:var(--muted);line-height:1.55;font-size:15px;margin:0 0 10px}
+  .thermal p b{color:var(--ink)}
+
+  /* ── About / footer ──────────────────────────────── */
+  .about{background:var(--panel);border:1px dashed #3d3d63;border-radius:14px;padding:18px 20px;color:var(--muted);
+    line-height:1.55;font-size:14.5px}
+  .about b{color:var(--ink)}
+  footer{border-top:3px solid var(--acid);margin-top:36px;background:var(--bg2)}
+  .foot{padding:24px 0 30px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:22px}
+  .foot h4{margin:0 0 10px;font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:var(--acid)}
+  .foot ul{list-style:none;margin:0;padding:0}
+  .foot li{margin:0 0 7px;font-size:14px}
+  .foot a{color:var(--muted);text-decoration:none}
+  .foot a:hover{color:var(--acid)}
+  .foot p{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0}
+  .colophon{border-top:1px solid var(--line);padding:13px 0 20px;font-size:12.5px;color:var(--muted);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero-art{min-height:250px}
+    .grid,.grid.two,.livegrid{grid-template-columns:1fr}
+    .card.feature{grid-column:span 1}
+    .thermal{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
+
+<!-- ══════════ BREAKING TICKER ══════════ -->
+<div class="tickerbar" role="marquee" aria-label="Feral wire headlines">
+  <div class="tag">⚡ Breaking</div>
+  <div class="ticker-viewport"><div class="ticker-track" id="tickerTrack">
+    <span>FERAL GLOBAL MEDIA LINKEDIN PAGE NOW LIVE — THE COLLABORATION CALL IS OPEN</span>
+    <span>GET IN WHERE YOU FIT IN: PICK YOUR STAGE, PICK YOUR LANE</span>
+    <span>THE BULLSHIT FILTER: RATINGS NEVER FOR SALE — THE FILTER EATS OUR OWN CLAIMS FIRST</span>
+    <span>SUPER BOWL ICE FISHING OPEN SET FOR SAT FEB 13, 2027 — MICHIGAN FREE FISHING WEEKEND</span>
+    <span>THERMAL TIME: TODAY READS 9.3 · DAY 6 ON THE TOURBILLION</span>
+    <span>THE LAB: 16,152 MACHINE-CHECKED THEOREMS — FREE FOREVER, NO PAYWALL, EVER</span>
+  </div></div>
+</div>
+
+<!-- ══════════ MASTHEAD ══════════ -->
+<header class="mast">
+  <div class="wrap">
+    <div class="dateline">
+      <span><b>Friday, November 20, 2026</b> · Schoolcraft, Michigan</span>
+      <span>Thermal read: <b>9.3 · day 6</b> · No newsroom. No deepfakes. All impulse.</span>
+    </div>
+    <div class="wordmark">
+      <img src="assets/moonman-poster.jpg" alt="Feral Global Media moonman emblem">
+      <div>
+        <h1><span class="fm">FERAL</span> <span class="gm">GLOBAL MEDIA</span></h1>
+        <div class="slogan">FERAL BY NATURE. MEDIA BY DESIGN.</div>
+      </div>
+    </div>
+    <nav class="desks" aria-label="News desks">
+      <a href="#local">Local</a>
+      <a href="#regional">Regional</a>
+      <a href="#national">National</a>
+      <a href="#global">Global</a>
+      <a href="#broadcast">Broadcast</a>
+      <a href="#thermal">Thermal Time</a>
+      <a href="#lab">The Lab</a>
+      <a href="bullshit-filter.html">The Bullshit Filter</a>
+      <a class="hot" href="https://www.linkedin.com/company/feral-global-media/">Get In ↗</a>
+    </nav>
+  </div>
+</header>
+
 <main class="wrap">
-  <div class="eyebrow"><span>🐺 Feral Global Media · est. 2026</span><span class="badge">The sandbox is open</span></div>
-  <h1>FERAL<br><span>GLOBAL MEDIA</span></h1>
-  <p class="tag">Untamed stories. Free forever.</p>
-  <p class="lede">This is the sandbox — where imagination plays in public to get a conversation about an idea rolling. Comedy, film, books, and visions live here. Some ideas graduate to the lab to be proved. Some graduate to the shelf to be sold. All of them start as a conversation.</p>
 
-  <figure class="hero">
-    <img src="assets/pelagic-city.jpg" alt="Project Pelagic concept image: a floating 15-minute city of domed hexagonal modules on the ocean at sunset">
-    <figcaption><b>Now playing in the sandbox:</b> Project Pelagic — floating 15-minute cities built from ocean plastic, fed by dynamic river gates. Vision, labeled vision. Concept art, not a built city.</figcaption>
-  </figure>
+  <!-- ══════════ TOP STORY ══════════ -->
+  <article class="hero" id="topstory">
+    <div class="hero-art">
+      <img src="assets/feral-poster-wide.jpg" alt="Feral Global Media poster art: moonman astronauts in deep space, one planting the FERAL flag">
+      <div class="livebug"><span class="dot"></span> TOP STORY</div>
+    </div>
+    <div class="hero-body">
+      <div class="kicker">The Launch · November 20, 2026</div>
+      <h2>Feral Global Media Stands Up Its Own Page — and Opens the Door</h2>
+      <p><b>Schoolcraft, Michigan —</b> Feral Global Media, the independent storytelling studio founded by Jeffrey Michael Gurd, launched its own LinkedIn Page today and put its flag in the ground: this network is being built in the open, and it is being built with whoever shows up.</p>
+      <div class="quote">“Ask for collaboration from every angle. Get in where you fit in.”</div>
+      <p>The logistics are simple, and they run on the same stages this whole network is organized by:</p>
+      <div class="steps">
+        <div class="step"><b>1 · Pick your stage</b>Local crew → regional contributor → national project → global reach.</div>
+        <div class="step"><b>2 · Pick your lane</b>Film, animation, art, writing, music, comedy, editing, streaming — or a skill we haven't named yet.</div>
+        <div class="step"><b>3 · Get in</b>Comment on the Page, send the Page a message, or open an issue on the GitHub repo with what you make and where you fit.</div>
+      </div>
+      <a class="cta" href="https://www.linkedin.com/company/feral-global-media/">The Page — get in ↗</a>
+      <a class="cta ghost" href="https://github.com/jeffgurd888/feral-global-media">The repo ↗</a>
+    </div>
+  </article>
 
-  <section class="grid" aria-label="The trees">
-    <article class="card"><div class="k">Flagship · Adult parody</div><h2>Fringe Comedy Network</h2><p>FCK'd TV's alternate universe: SpongeBetty CircleSkirt™ and the cast from the other side of the 5th wall, in the FCK'D Ultimate uNiverse. 100% parody — the first word on the concept sheet. <i>In development.</i></p></article>
-    <article class="card"><div class="k">Family line</div><h2>Tet Little Books</h2><p>Twelve drafted books carrying big ideas to small readers — Tet, Blau, Verde, and Rubie — with the Field Almanac as capstone.</p></article>
-    <article class="card"><div class="k">Vision line</div><h2>Pelagic &amp; River Gates</h2><p>Floating cities and the river filters that feed them. Read the design in the <a href="https://github.com/jeffgurd888/Project-Palegic-15-minute-floating-cities">Project Pelagic repo</a>.</p></article>
-    <article class="card"><div class="k">Film heritage</div><h2>Ghosted &amp; OEB1E7</h2><p>The roots: a 2014 short from Public Media Network's Cinema 2880, and a screenplay premise about an oil-eating bacteria that didn't stay in the water.</p></article>
-    <article class="card wide"><div class="k">The reaction stream · Now filtering</div><h2>💩 The Bullshit Filter</h2><p>A reaction livestream that pours claims through five sieves — Screen, Mesh, Trap, Rinse, Nose — and issues a Trust Rating from 💎 Clear Water to 💩 Full Septic. It eats the host's own claims first. <a href="bullshit-filter.html">Pour a claim yourself →</a> · <a href="https://github.com/jeffgurd888/feral-global-media/blob/main/BULLSHIT-FILTER.md">The show bible</a></p></article>
-    <article class="card wide"><div class="k">The science story</div><h2>The Research, Told as Story</h2><p>The same program the lab proves, Feral narrates. For the proof itself — machine-verified mathematics, tiered claims, kills published next to the wins — go to the lab: <a href="https://github.com/jeffgurd888/thet-logos">Nexus Research · thet-logos</a>. That door is the one this sandbox is allowed to point at.</p></article>
+  <!-- ══════════ LIVE DESK ══════════ -->
+  <section class="livedesk" aria-label="Live desk">
+    <h2><span class="dot" style="width:11px;height:11px;background:var(--red)"></span> FERAL LIVE — The Desk Is Open</h2>
+    <p class="sub">This is a one-man network with an open door, so “live” here means what it says: the wires below are the actual state of the studio today, Friday, November 20, 2026 — not a simulation of a newsroom.</p>
+    <div class="livegrid">
+      <div class="liveitem">
+        <div class="t">● On the wire now</div>
+        <h3 id="clockbox">Schoolcraft, Michigan — --:--:--</h3>
+        <p>Local time at the studio. Thermal time runs underneath it: today reads <b style="color:var(--gold)">9.3 · day 6</b> on the Archimedean Antikythera Tourbillion. See the Thermal Time desk below.</p>
+      </div>
+      <div class="liveitem">
+        <div class="t">● Open call</div>
+        <h3>Collaboration pipeline: OPEN</h3>
+        <p>Every desk on this page is accepting people. Local crew, regional contributors, national projects, global reach — the call went out today on the Page and it does not expire.</p>
+      </div>
+      <div class="liveitem">
+        <div class="t">● Awaiting word</div>
+        <h3>One pitch out, one reply owed</h3>
+        <p>The couch-guy feature <i>Half Baked Tet½™</i> is pitched to Brillstein Entertainment Partners. We are awaiting a reply — that is the whole update, and it's the honest one. Full story at the National desk.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="rules" aria-label="House rules">
-    <div class="rule"><h3>🚪 The One-Way Door</h3><p>Feral may point at the lab. The lab never points back. Attention flows toward the proof; credibility never flows toward the attention.</p></div>
-    <div class="rule"><h3>⚙️ The Engine</h3><p>Feral is the paid leg of the idea engine: the conversation is free, the entertainment and products may charge — and earnings flow toward the mission.</p></div>
-    <div class="rule"><h3>🏷️ Honest Labels</h3><p>Parody is labeled parody. Vision is labeled vision. Nothing here is a scientific claim; claims live at the lab, at their tier.</p></div>
+  <!-- ══════════ LOCAL DESK ══════════ -->
+  <section class="desk" id="local">
+    <div class="desk-head">
+      <h2>Local</h2><span class="chip local">Stage 1</span>
+      <span class="stage">Schoolcraft · Kalamazoo County — where every story on this network starts.</span>
+    </div>
+    <div class="grid">
+      <article class="card feature">
+        <div class="k">Local Business · On the Ice</div>
+        <h3>Park and Fish: Airbnb for Your Favorite Fishing Spots</h3>
+        <p>The local leg of the studio's parent company, Eco-Kleen Co. LLC, does business as <b style="color:var(--ink)">Park and Fish</b> — ice-shanty rentals that work like a short-stay rental for the hardwater season. Two ways in: shanties already set at high-visibility lakes, or a drop-a-pin concierge setup where the shanty, tackle, and bait come to your spot. Twenty-four-hour rentals included.</p>
+        <p>The pilot ask is deliberately small and provable: <b style="color:var(--ink)">one stocked, logoed shanty on Sugarloaf Lake</b>, a trail cam per shanty, and yard signs where Shaver Road and US-131 traffic can see them. And the date is already circled: the <b style="color:var(--ink)">Super Bowl Ice Fishing Open</b>, planned for Saturday, February 13, 2027 — Michigan's Free Fishing Weekend, when nobody needs a license to fish.</p>
+        <div class="meta">Filed from Schoolcraft · Status: <span class="status">Pilot ask out</span></div>
+      </article>
+      <article class="card">
+        <img class="cardart" src="assets/pelagic-city.jpg" alt="Concept art from the Feral archive: a floating city of domed modules on the ocean at sunset" style="object-position:center 30%">
+        <div class="k">From the Archive · Film Heritage</div>
+        <h3>Ghosted (2014): The Roots Are Local</h3>
+        <p>Before there was a network, there was a seven-minute film. <i>Ghosted</i>, made with the team E Pluribus Unum for Public Media Network's Cinema 2880 in Kalamazoo in 2014, is the studio's founding artifact — proof this outfit has been telling stories in public, on deadline, for over a decade.</p>
+        <div class="meta">Public Media Network · Cinema 2880 · 2014</div>
+      </article>
+    </div>
   </section>
 
-  <footer>
-    <b>The record stays free forever.</b> No paywall ever touches a paper, a repo, or a theorem count — that is the Foundation, and the paid leg exists to protect it, not to sell it.<br>
-    Support the work: Cash App <b>$Gurd888</b> · Jeffrey Michael Gurd · Feral Global Media is the media line of Nexus Research. MIT licensed — take the sandbox and build your own.
-  </footer>
+  <!-- ══════════ REGIONAL DESK ══════════ -->
+  <section class="desk" id="regional">
+    <div class="desk-head">
+      <h2>Regional</h2><span class="chip regional">Stage 2</span>
+      <span class="stage">Michigan · the Midwest — the voices from the heartland get their own desk.</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="k">In Development · Adult Parody</div>
+        <h3>Fringe Comedy Network / FCK'd TV</h3>
+        <p>The flagship comedy line: an adult parody universe broadcast from the other side of the fifth wall. It is labeled parody because it is parody — the first word on the concept sheet and the standing rule of the house. The cast is forming; the channel is not. Yet.</p>
+        <div class="meta">Status: <span class="status">In development</span></div>
+      </article>
+      <article class="card feature">
+        <div class="k">The Reaction Stream · Now Filtering</div>
+        <h3>💩 The Bullshit Filter</h3>
+        <p>Every claim that wants airtime on this network gets poured through five sieves first — <b style="color:var(--ink)">Screen, Mesh, Trap, Rinse, Nose</b> — and comes out with a Trust Rating from 💎 <b style="color:var(--ink)">Clear Water</b> to 💩 <b style="color:var(--ink)">Full Septic</b>. Two laws govern the Filter: ratings are <b style="color:var(--ink)">never for sale</b>, and the Filter eats the host's own claims first — this network's stories go through the same mesh as everyone else's.</p>
+        <p>The interactive Filter is live. Bring a claim — ours, yours, anyone's — and pour it yourself.</p>
+        <div class="meta"><a href="bullshit-filter.html">Pour a claim through the Filter →</a> · <a href="https://github.com/jeffgurd888/feral-global-media/blob/main/BULLSHIT-FILTER.md">Read the show bible ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ NATIONAL DESK ══════════ -->
+  <section class="desk" id="national">
+    <div class="desk-head">
+      <h2>National</h2><span class="chip national">Stage 3</span>
+      <span class="stage">The country — the books and the film work pitched where books and films get made.</span>
+    </div>
+    <div class="grid">
+      <article class="card feature">
+        <div class="k">The Book Line · Nine Scales</div>
+        <h3>The Little Scientist: A First Book at Every Scale</h3>
+        <p>One idea, nine doors: a first book at <i>every</i> scale of the world a child will ever meet — <b style="color:var(--ink)">Subatomic → Atoms → Molecules → Cells → The Body → Earth → Solar System → Galaxy → Cosmos</b>. The books are stackable and individually modular: each book's compiled whole becomes the next book's base page, so the series itself teaches the lesson it carries — many layers, cresting into one image, each layer's dynamics impacting the whole through balance.</p>
+        <p>Book production is in active conversation with print partners now; the transparent-overlay edition — layers you can lift, align, and stack — is the flagship format.</p>
+        <div class="meta">Series rule, set by the founder: stackable, modular, one whole.</div>
+      </article>
+      <article class="card">
+        <div class="k">Film · The Pitch</div>
+        <h3>Half Baked Tet½™</h3>
+        <p>The couch-guy feature: a man on a couch has an epiphany in a dream, dreams the answers to the biggest open problems in mathematics — and every attempt to tell anyone derails into philosophy. Built as a comedy, aimed at the original Guy on the Couch tradition.</p>
+        <p>The pitch is out to <b style="color:var(--ink)">Brillstein Entertainment Partners</b>. We are awaiting a reply. That is the complete and accurate status of this story.</p>
+        <div class="meta">Status: <span class="status">Awaiting reply</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ GLOBAL DESK ══════════ -->
+  <section class="desk" id="global">
+    <div class="desk-head">
+      <h2>Global</h2><span class="chip global">Stage 4</span>
+      <span class="stage">The world — stories for everyone, everywhere, and the vision line that aims there.</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <img class="cardart" src="assets/pelagic-city.jpg" alt="Project Pelagic concept art: floating domed city modules on the open ocean" style="object-position:center 55%">
+        <div class="k">Vision Line · Labeled Vision</div>
+        <h3>Pelagic / River Gates</h3>
+        <p>Floating fifteen-minute cities built from ocean plastic, fed by dynamic river gates that filter the rivers on their way to the sea. It is a vision — labeled vision, on the record as vision — and it is the far end of the line this network is walking: local stories, honestly told, until the telling reaches the whole planet.</p>
+        <div class="meta"><a href="https://github.com/jeffgurd888/Project-Palegic-15-minute-floating-cities">The Pelagic design repo ↗</a></div>
+      </article>
+      <article class="card feature">
+        <div class="k">The Manifesto · How This Network Grows</div>
+        <h3>Local → Regional → National → Global</h3>
+        <p>Most media starts at the top and shouts down. Feral starts at the ground and grows up: stories from our own streets in Schoolcraft first, because a network that can't tell the truth about its own town has no business narrating the world. Then Michigan and the Midwest. Then the country. Then everyone, everywhere.</p>
+        <p>The stages are not a metaphor — they are the org chart, the desk structure of this very page, and the collaboration pipeline. Wherever you are reading this from is a stage. <b style="color:var(--ink)">Get in where you fit in.</b></p>
+        <div class="meta"><a href="https://www.linkedin.com/company/feral-global-media/">Join at your stage — the Page ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ BROADCAST ══════════ -->
+  <section class="desk" id="broadcast">
+    <div class="desk-head">
+      <h2>Broadcast</h2>
+      <span class="stage">The program guide — what's on, what's forming, and what each show answers to.</span>
+    </div>
+    <table class="guide">
+      <tr><th style="width:26%">Program</th><th>Format</th><th style="width:20%">Status</th></tr>
+      <tr>
+        <td class="show">💩 The Bullshit Filter</td>
+        <td><p>The reaction stream. Claims go in, Trust Ratings come out — 💎 Clear Water to 💩 Full Septic — poured through the five sieves on camera. First in the mesh, always: our own claims.</p></td>
+        <td><span class="status">Interactive page live</span><br><a href="bullshit-filter.html">Open the Filter →</a></td>
+      </tr>
+      <tr>
+        <td class="show">Fringe Comedy Network</td>
+        <td><p>FCK'd TV — the adult parody universe. Sketches and series from the other side of the fifth wall, labeled parody on every frame it needs to be.</p></td>
+        <td><span class="status">In development</span></td>
+      </tr>
+      <tr>
+        <td class="show">The Sandbox Sessions</td>
+        <td><p>The studio thinking out loud: new ideas get a conversation before they get a verdict. Some graduate to the lab to be proved. Some graduate to the shelf to be sold. All of them start here.</p></td>
+        <td><span class="status">Rolling</span></td>
+      </tr>
+      <tr>
+        <td class="show">Pelagic: The Vision Line</td>
+        <td><p>Long-form features on the floating-cities vision and the river gates — design walkthroughs, honest labels, concept art credited as concept art.</p></td>
+        <td><span class="status">In the sandbox</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ══════════ THERMAL TIME (the weather slot) ══════════ -->
+  <section class="desk" id="thermal">
+    <div class="desk-head">
+      <h2>Thermal Time</h2>
+      <span class="stage">The weather desk, replaced. This network doesn't read the forecast — it reads the sun.</span>
+    </div>
+    <div class="thermal">
+      <div>
+        <div class="big">9.3 · day 6<small>Today · Friday, Nov 20, 2026 · on the Tourbillion</small></div>
+      </div>
+      <div>
+        <p><b>LogicLock</b> is this network's clock: the Modular Thermal Equilibrium Calendar, carried on the Archimedean Antikythera Tourbillion. The year is counted in solar longitude and thermal phase, in thirteen modules of four weeks — and the count has a door in it: <b>April 1 is Zero Day, the Clean Residual Day</b>, address 0.0, outside the count entirely. The counted year opens April 2.</p>
+        <p>The house doctrine, in the founder's words: <b>“We don't have time zones — we have solar thermal lag.”</b> A place is its arc position on the planet plus its surface-inertia lag. That's the whole forecast this desk will ever give you, and it never changes with the weather.</p>
+        <p><a href="https://jeffgurd888.github.io/thet-logos/thermal-time-watch.html">Run the thermal time watch ↗</a> · <a href="https://github.com/jeffgurd888/thet-logos">The calendar's home in the lab repo ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE LAB ══════════ -->
+  <section class="desk" id="lab">
+    <div class="desk-head">
+      <h2>The Lab</h2>
+      <span class="stage">Feral reports; the lab proves. This desk points one way, by house law.</span>
+    </div>
+    <div class="grid">
+      <article class="card feature">
+        <div class="k">Science Desk · Reported from the Lab</div>
+        <h3>16,152 Machine-Checked Theorems, Free Forever</h3>
+        <p>Down the hall from this studio sits Nexus Research — the lab half of the house — where the program called <b style="color:var(--ink)">Active Cartesian Modular Thermodynamics</b> is being formalized in Lean 4: every claim graded at its tier, every proof checked by the kernel, every kill published next to the wins at the same volume. The census of record stands at <b style="color:var(--ink)">16,152 strict theorems</b>, and the entire corpus — papers, proofs, ledger — is public and free for everyone, forever.</p>
+        <p>Feral's job is the story; the lab's job is the proof. For the proof itself, go straight to the source:</p>
+        <div class="meta"><a href="https://github.com/jeffgurd888/thet-logos">github.com/jeffgurd888/thet-logos ↗</a></div>
+      </article>
+      <article class="card">
+        <div class="k">House Law · The One-Way Door</div>
+        <h3>Why This Desk Only Points One Way</h3>
+        <p>Feral may point at the lab. The lab never points back. Attention is allowed to flow toward the proof; credibility is never allowed to flow toward the attention. Theorem counts wear the lab's name — punchlines wear Feral's. That's why this desk is exactly one card wide.</p>
+        <div class="meta">Set by the founder, October 24, 2026 — standing law.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ ABOUT THIS NETWORK ══════════ -->
+  <section class="desk" id="about">
+    <div class="desk-head"><h2>About This Network</h2></div>
+    <div class="about">
+      <b>Feral Global Media is an independent storytelling studio</b> — founded by Jeffrey Michael Gurd in Schoolcraft, Michigan, and run as the media line of his work. It is not affiliated with any news organization. <b>All coverage on this site is of Feral's own projects, people, and open calls</b> — the studio reports on itself, its slate, and its invitations, and labels everything it carries: parody is labeled parody, vision is labeled vision, and scientific claims live at the lab, at their tier. Feral is the paid leg of the idea engine — entertainment and products may charge — while the lab and the record stay free forever.
+    </div>
+  </section>
 </main>
+
+<!-- ══════════ BANNER ══════════ -->
+<div class="wrap" style="margin-bottom:6px">
+  <img src="assets/feral-banner.png" alt="Feral Global Media banner: the moonman poster art with the gold Archimedean Tourbillion medallion reading 9.3 · day 6" style="width:100%;border-radius:14px;border:1px solid var(--line);display:block">
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Feral Global Media</h4>
+        <p>The sandbox for the imagination — an independent storytelling studio growing in stages: local, regional, national, global. Feral by nature. Media by design.</p>
+        <p style="margin-top:10px">Founded by <b style="color:var(--ink)">Jeffrey Michael Gurd</b> · Schoolcraft, Michigan.</p>
+      </div>
+      <div>
+        <h4>Section Index</h4>
+        <ul>
+          <li><a href="#topstory">Top Story — The Launch</a></li>
+          <li><a href="#local">Local Desk</a></li>
+          <li><a href="#regional">Regional Desk</a></li>
+          <li><a href="#national">National Desk</a></li>
+          <li><a href="#global">Global Desk</a></li>
+          <li><a href="#broadcast">Broadcast Guide</a></li>
+          <li><a href="#thermal">Thermal Time</a></li>
+          <li><a href="#lab">The Lab</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The Wires</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/feral-global-media/">Feral on LinkedIn — get in ↗</a></li>
+          <li><a href="https://github.com/jeffgurd888/feral-global-media">This site's repo ↗</a></li>
+          <li><a href="bullshit-filter.html">The Bullshit Filter</a></li>
+          <li><a href="https://github.com/jeffgurd888/feral-global-media/blob/main/BULLSHIT-FILTER.md">The Filter's show bible ↗</a></li>
+          <li><a href="https://github.com/jeffgurd888/thet-logos">The Lab — thet-logos ↗</a></li>
+          <li><a href="https://jeffgurd888.github.io/feral-global-media/">This page, live on Pages ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>© 2026 Feral Global Media · MIT licensed — take the sandbox and build your own.</span>
+      <span>The record stays free forever.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Ticker: duplicate the track so the CSS loop is seamless.
+  (function(){
+    var t = document.getElementById('tickerTrack');
+    if (t) t.innerHTML += t.innerHTML;
+  })();
+  // Live desk clock: studio local time (America/New_York), ticking each second.
+  (function(){
+    var el = document.getElementById('clockbox');
+    if (!el) return;
+    var fmt = new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',
+      hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true});
+    function tick(){
+      el.textContent = 'Schoolcraft, Michigan — ' + fmt.format(new Date()) + ' ET · LIVE';
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+</script>
 </body>
 </html>
