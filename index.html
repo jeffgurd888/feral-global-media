@@ -75,6 +75,31 @@
   .cta:hover{background:#cfff6b;color:#0a0f02}
   .cta.ghost{background:transparent;color:var(--acid);border:1px solid var(--acid);margin-left:8px}
 
+  /* ── The Feral Call (campaign band) ──────────────── */
+  .ticker-track a{color:#fff;text-decoration:none}
+  .callband{margin:0 0 22px;border:2px solid var(--pink);border-radius:18px;padding:26px 28px;
+    background:radial-gradient(800px 300px at 90% -80px, rgba(255,34,34,.22), transparent 60%),
+    radial-gradient(700px 280px at 5% -60px, rgba(182,255,46,.12), transparent 60%),
+    linear-gradient(180deg,#170a18,#0d0d18)}
+  .callband .alarm{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-.01em;line-height:1.05;margin:6px 0 8px}
+  .callband .bigline{font-size:clamp(19px,2.6vw,26px);font-weight:800;line-height:1.3;margin:0 0 8px;color:var(--ink)}
+  .callband .bigline .noai{color:var(--acid)}
+  .callband p{color:var(--muted);line-height:1.55;font-size:15.5px;margin:0 0 12px;max-width:840px}
+  .callband p b{color:var(--ink)}
+  .lanes{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:9px;margin:16px 0}
+  .lane{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:14.5px;font-weight:700}
+  .callband .pick{font-size:clamp(16px,2.2vw,21px);font-weight:900;letter-spacing:.03em;color:var(--gold);margin:14px 0 8px}
+
+  /* ── Join — What's Your Feral? ───────────────────── */
+  .joinq{font-size:clamp(40px,7vw,84px);font-weight:900;line-height:.98;letter-spacing:-.02em;margin:4px 0 10px}
+  .joinq .q{color:var(--pink);text-shadow:0 0 30px rgba(255,46,136,.4)}
+  .joinprompt{font-size:clamp(16px,2.2vw,20px);color:var(--ink);line-height:1.45;max-width:760px;margin:0 0 16px}
+  .joinnote{color:var(--muted);line-height:1.55;font-size:15px;margin:0 0 14px;max-width:840px}
+  .joinnote b{color:var(--ink)}
+  .joinclose{font-size:clamp(17px,2.4vw,23px);font-weight:900;letter-spacing:.02em;margin:18px 0 4px}
+  .joinclose .bf{color:var(--acid)}
+  .doctrine{color:var(--gold);font-weight:700;letter-spacing:.05em;margin:0;font-size:14.5px}
+
   /* ── Section scaffolding ─────────────────────────── */
   section.desk{margin:34px 0}
   .desk-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--line);
@@ -159,6 +184,7 @@
 <div class="tickerbar" role="marquee" aria-label="Feral wire headlines">
   <div class="tag">⚡ Breaking</div>
   <div class="ticker-viewport"><div class="ticker-track" id="tickerTrack">
+    <span><a href="#join">THE FERAL CALL IS OPEN — WHAT'S YOUR FERAL? DECLARE YOUR LANE ↓ #BECOMEFERAL</a></span>
     <span>FERAL GLOBAL MEDIA LINKEDIN PAGE NOW LIVE — THE COLLABORATION CALL IS OPEN</span>
     <span>GET IN WHERE YOU FIT IN: PICK YOUR STAGE, PICK YOUR LANE</span>
     <span>THE BULLSHIT FILTER: RATINGS NEVER FOR SALE — THE FILTER EATS OUR OWN CLAIMS FIRST</span>
@@ -191,6 +217,7 @@
       <a href="#thermal">Thermal Time</a>
       <a href="#lab">The Lab</a>
       <a href="bullshit-filter.html">The Bullshit Filter</a>
+      <a class="hot" href="#join">Become Feral</a>
       <a class="hot" href="https://www.linkedin.com/company/feral-global-media/">Get In ↗</a>
     </nav>
   </div>
@@ -219,6 +246,48 @@
       <a class="cta ghost" href="https://github.com/jeffgurd888/feral-global-media">The repo ↗</a>
     </div>
   </article>
+
+  <!-- ══════════ THE FERAL CALL ══════════ -->
+  <section class="callband" aria-label="The Feral Call">
+    <div class="kicker">The Movement · The Call</div>
+    <h2 class="alarm">🚨 THE FERAL CALL IS OPEN.</h2>
+    <p class="bigline">Don't just follow the news. Become part of the people reporting it.</p>
+    <p class="bigline"><span class="noai">REAL HUMANS. REAL NEWS. NO AI. EVER.</span></p>
+    <p>What if you stopped watching everyone else create the world and started helping create it yourself? We're building an independent media network from the ground up — local voices, regional stories, national projects, global reach — and we're opening the doors to <b>you</b>. You don't need a journalism degree. You don't need a production studio. You don't need permission. You just need something to contribute.</p>
+    <div class="lanes">
+      <div class="lane">🎬 Filmmakers &amp; videographers</div>
+      <div class="lane">🎨 Artists &amp; graphic designers</div>
+      <div class="lane">✍️ Writers &amp; storytellers</div>
+      <div class="lane">🎭 Comedians &amp; entertainers</div>
+      <div class="lane">🎵 Musicians &amp; performers</div>
+      <div class="lane">📸 Photographers &amp; creators</div>
+      <div class="lane">🎙️ Independent voices &amp; commentators</div>
+      <div class="lane">💡 Inventors, thinkers &amp; people with ideas</div>
+    </div>
+    <div class="pick">PICK YOUR STAGE. PICK YOUR LANE. GET IN WHERE YOU FIT IN.</div>
+    <p>We're not building an audience just to count followers. We're building a community of contributors. <b>No corporate gatekeepers. No manufactured ratings. No selling credibility.</b></p>
+    <a class="cta" href="#join">What's your Feral? ↓</a>
+  </section>
+
+  <!-- ══════════ JOIN — WHAT'S YOUR FERAL? ══════════ -->
+  <section class="desk" id="join">
+    <div class="desk-head">
+      <h2>Join the Movement</h2><span class="chip regional">#BecomeFeral</span>
+      <span class="stage">Independent voices. Unfiltered perspectives. A community that refuses to sit quietly.</span>
+    </div>
+    <div class="joinq">WHAT'S YOUR <span class="q">FERAL?</span></div>
+    <p class="joinprompt">Tell us what you create, what you're passionate about, and what you'd bring to the table. That's the whole application. Three steps:</p>
+    <div class="steps">
+      <div class="step"><b>1 · Visit</b>You're here. Look through the desks on this page, find your stage — local, regional, national, global — and picture your name on it.</div>
+      <div class="step"><b>2 · Declare</b>Comment on the <a href="https://www.linkedin.com/company/feral-global-media/">Feral Global Media LinkedIn Page</a> with your talent, your idea, and what you want to contribute. That's your declaration — public, on the record, yours.</div>
+      <div class="step"><b>3 · Bring one</b>Share this page and bring another creator into the network. Movements grow one person carrying one person.</div>
+    </div>
+    <p class="joinnote">And then the pipeline does its work: <b>contributors become projects, projects become shows, and shows become sponsorship opportunities</b>. Nobody here is building a follower count — we're building the roster the shows get cast from.</p>
+    <a class="cta" href="https://www.linkedin.com/company/feral-global-media/">Declare your Feral ↗</a>
+    <a class="cta ghost" href="https://jeffgurd888.github.io/feral-global-media/">Share the front door ↗</a>
+    <div class="joinclose">VISIT THE PAGE. GET INVOLVED. <span class="bf">BECOME FERAL.</span></div>
+    <p class="doctrine">FERAL BY NATURE. MEDIA BY DESIGN.</p>
+  </section>
 
   <!-- ══════════ LIVE DESK ══════════ -->
   <section class="livedesk" aria-label="Live desk">
@@ -437,6 +506,7 @@
         <h4>Section Index</h4>
         <ul>
           <li><a href="#topstory">Top Story — The Launch</a></li>
+          <li><a href="#join">Join — What's Your Feral?</a></li>
           <li><a href="#local">Local Desk</a></li>
           <li><a href="#regional">Regional Desk</a></li>
           <li><a href="#national">National Desk</a></li>
