@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Chain of Verification — Feral Global Media</title>
+<meta name="description" content="Feral Global Media is a human verified truth service. Watch one report travel its chain of verification — You, me and the world.">
+<style>
+  :root{
+    --bg:#06060a; --bg2:#0b0b14; --panel:#10101c; --panel2:#151527;
+    --line:#262640; --ink:#f2f2f8; --muted:#a7a7c2;
+    --acid:#b6ff2e; --acid-dim:#9be15d; --pink:#ff2e88; --red:#ff2222; --gold:#ffb340; --teal:#2ee6c8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,var(--bg2),var(--bg) 55%,var(--bg2));color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--acid-dim)} a:hover{color:var(--acid)}
+  .wrap{max-width:880px;margin:0 auto;padding:26px 20px 40px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--acid)}
+  h1{font-size:clamp(36px,7vw,60px);line-height:.95;margin:12px 0 6px;letter-spacing:-.02em;font-weight:900}
+  h1 .deg{color:var(--pink)}
+  .tag{font-size:18px;color:var(--muted);line-height:1.55;max-width:700px}
+  .tag b{color:var(--ink)}
+  .rule3{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+  .rule3 div{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .rule3 .n{font-size:22px;font-weight:900;color:var(--gold)}
+  .rule3 h3{margin:2px 0 3px;font-size:15px}
+  .rule3 p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+  .demo{margin-top:22px}
+  .report{background:var(--panel2);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:16px;padding:16px 18px}
+  .report .sample{display:inline-block;background:#241a08;border:1px solid #6b5216;color:#ffd48a;border-radius:999px;
+    font-size:11px;font-weight:900;letter-spacing:.08em;padding:3px 10px;text-transform:uppercase}
+  .report h2{margin:9px 0 4px;font-size:22px;line-height:1.2}
+  .report p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5}
+
+  .meter{margin:16px 0 6px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+  .meter .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .meter .lbl{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .meter .rating{font-size:20px;font-weight:900}
+  .meter .degcount{font-size:20px;font-weight:900;color:var(--gold)}
+  .bar{height:12px;background:#0a0a12;border:1px solid var(--line);border-radius:999px;margin-top:10px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0%;border-radius:999px;background:var(--red);transition:width .6s ease,background .6s ease}
+  .meter .why{margin:9px 0 0;color:var(--muted);font-size:13.5px;line-height:1.45}
+
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+  .controls button{border-radius:999px;padding:11px 18px;font-size:14.5px;font-weight:800;cursor:pointer;border:1px solid var(--line)}
+  #nextBtn{background:var(--acid);color:#0a0f05;border:none}
+  #nextBtn:disabled{opacity:.45;cursor:default}
+  .ghost{background:#0a0a12;color:var(--ink)}
+  .ghost:hover{border-color:var(--acid)}
+
+  .chain{margin-top:8px}
+  .link{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px 14px 64px;margin:14px 0;
+    opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+  .link.show{opacity:1;transform:none}
+  .link .deg{position:absolute;left:14px;top:14px;width:38px;height:38px;border-radius:50%;background:#0a0a12;border:2px solid var(--gold);
+    color:var(--gold);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .link.world{border-color:var(--acid)} .link.world .deg{border-color:var(--acid);color:var(--acid)}
+  .link h3{margin:0;font-size:16.5px}
+  .link h3 .role{color:var(--pink);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-left:6px}
+  .link .meta{color:var(--muted);font-size:12.5px;margin:2px 0 7px}
+  .link p{margin:0;font-size:14.5px;line-height:1.5}
+  .link p b{color:var(--teal);font-weight:700}
+  .link::before{content:"";position:absolute;left:32px;top:-14px;width:2px;height:14px;background:var(--line)}
+  .link:first-child::before{display:none}
+
+  .cta{margin-top:24px;border:1px solid var(--acid);border-radius:20px;padding:22px;background:#0d1407;text-align:center;display:none}
+  .cta.show{display:block}
+  .cta h2{margin:0 0 6px;font-size:clamp(24px,5vw,34px);letter-spacing:-.01em}
+  .cta p{color:var(--muted);line-height:1.55;max-width:600px;margin:6px auto 0}
+  .roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;text-align:left}
+  .roles div{flex:1;min-width:170px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .roles h3{margin:0 0 3px;font-size:15px;color:var(--gold)}
+  .roles p{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+
+  footer{margin-top:26px;color:var(--muted);font-size:13px;line-height:1.6;border-top:1px solid var(--line);padding-top:13px}
+  @media (max-width:560px){ .link{padding-left:58px} .controls button{flex:1} }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">⛓️ Feral Global Media · The Verification Network</div>
+  <h1>THE CHAIN OF <span class="deg">VERIFICATION</span></h1>
+  <p class="tag">Feral Global Media is a <b>human verified truth service</b>. No feed decides what's true. No algorithm vouches. <b>People do</b> — named humans, tagged in a chain, every one of them answering for their handoff. Truth from <b>ground zero</b>, anywhere in the world, in a fraction of a minute — carried by <b>6° of friendships and human trust</b>.</p>
+
+  <div class="rule3" aria-label="The three degree rule">
+    <div><div class="n">0°</div><h3>You</h3><p>The witness at ground zero. You saw it. You file it. Your name is on it.</p></div>
+    <div><div class="n">1°</div><h3>Me</h3><p>The verifier. I check it, I tag it, I answer for the handoff.</p></div>
+    <div><div class="n">3°</div><h3>The World</h3><p>Published — with the whole chain attached, for anyone to judge.</p></div>
+  </div>
+
+  <section class="demo" aria-label="Interactive demo">
+    <div class="report">
+      <span class="sample">Sample report — fictional, for demonstration</span>
+      <h2>Water-main break floods Shaver Road, Schoolcraft</h2>
+      <p>Water over both lanes near the rail crossing; road still passable on the shoulder. Filed from the scene. Below, watch this one report travel its chain — tag by tag — from ground zero to the world.</p>
+    </div>
+
+    <div class="meter" aria-live="polite">
+      <div class="row">
+        <span class="lbl">Trust Rating — read off the chain</span>
+        <span class="degcount" id="degCount">—</span>
+      </div>
+      <div class="row" style="margin-top:4px">
+        <span class="rating" id="ratingName">💩 FULL SEPTIC</span>
+        <span class="lbl" id="ratingStep">No chain yet</span>
+      </div>
+      <div class="bar"><i id="barFill"></i></div>
+      <p class="why" id="ratingWhy">Right now this is an untagged claim — words with no road behind them. The Filter flushes those. Add the first tag.</p>
+    </div>
+
+    <div class="controls">
+      <button id="nextBtn">File the report — tag 0° →</button>
+      <button class="ghost" id="playBtn">▶ Auto-play</button>
+      <button class="ghost" id="resetBtn">↺ Reset</button>
+    </div>
+
+    <div class="chain" id="chain"></div>
+
+    <section class="cta" id="cta">
+      <h2>GET IN WHERE YOU FIT IN</h2>
+      <p>That chain took under a minute and crossed three degrees of named humans. Now imagine it staffed — <b style="color:var(--ink)">boots on the ground</b> in every town, reporting the truth at ground zero, each link checked by somebody who answers for it. That's the network. It needs people at every station: local, regional, national, global.</p>
+      <div class="roles">
+        <div><h3>🗣️ Reporter</h3><p>You're where it happens. File from ground zero and put your name on it.</p></div>
+        <div><h3>🔎 Verifier</h3><p>You check reports and tag them — and your name carries your link.</p></div>
+        <div><h3>📣 Carrier</h3><p>You pass verified reports on, intact, to the next degree.</p></div>
+      </div>
+      <p style="margin-top:16px">Get in via the <a href="index.html#join">Become Feral</a> desk — or start by pouring any claim through <a href="bullshit-filter.html">The Bullshit Filter</a>.</p>
+    </section>
+  </section>
+
+  <footer>
+    The rules, in one breath: a tag is a named human saying <i>"I answer for this handoff"</i>; a report is exactly as strong as its weakest tag; the chain is the credential. Read the full working spec: <a href="https://github.com/jeffgurd888/feral-global-media/blob/main/CHAIN-OF-VERIFICATION.md">CHAIN-OF-VERIFICATION.md ↗</a>. Ratings are never for sale. Back to the <a href="index.html">sandbox</a>.
+  </footer>
+</main>
+<script>
+const STEPS = [
+  {
+    deg:"0°", role:"Reporter · Witness", name:"Dana R.", time:"6:12 AM · at the scene",
+    knows:"Was there — lives on Shaver Road, shot the photo from her porch.",
+    said:"“Water-main break at the rail crossing. Water over both lanes, up over the curb on the north side. I'm standing in it — it's real.”",
+    btn:"Verifier tags it — 1° →",
+    rating:"🧦 SOCK IN THE PIPE", pct:25, color:"#ff6b57", step:"Chain: 0° · witness only",
+    why:"A named witness at ground zero — a real start. But nobody has checked it yet, and the Filter says so."
+  },
+  {
+    deg:"1°", role:"Verifier", name:"Marcus T.", time:"6:16 AM · +4 minutes",
+    knows:"Knows Dana — two streets over, same neighborhood watch.",
+    said:"“Walked down and saw it myself. Water over the road at the crossing, just like she said. I answer for this handoff.”",
+    btn:"Second tag — 2° →",
+    rating:"🌫️ MURKY", pct:50, color:"#ffb340", step:"Chain: 0° → 1° · checked once",
+    why:"Checked once by a named human who knows the witness. The road exists — it's still thin."
+  },
+  {
+    deg:"2°", role:"Verifier · Carrier", name:"Priya S.", time:"6:19 AM · +7 minutes",
+    knows:"Knows Marcus — they serve on the school board together.",
+    said:"“Called the village office: break confirmed, crew dispatched, Shaver Road closes at 8 AM for the repair. Carrying this on, word for word.”",
+    btn:"Publish to the world — 3° →",
+    rating:"🥤 DRINKABLE", pct:75, color:"#2ee6c8", step:"Chain: 0° → 1° → 2° · checked twice",
+    why:"Two independent checks, an official confirmation, and a carrier who attests she passed it on intact."
+  },
+  {
+    deg:"3°", role:"The World", name:"Published — chain attached", time:"6:20 AM · +8 minutes, ground zero to everywhere",
+    knows:"Every reader can now see the whole road: who saw it, who checked it, who carried it.",
+    said:"The report goes out with its chain on its face. Judge the humans in it — that's the credential.",
+    btn:"Chain complete ✓",
+    rating:"💎 CLEAR WATER", pct:100, color:"#b6ff2e", step:"Chain: 0° → 1° → 2° → 3° · complete",
+    why:"A complete chain to a named witness at ground zero. You, me and the world — three degrees, eight minutes, every link accountable."
+  }
+];
+let idx = -1, timer = null;
+const chainEl = document.getElementById('chain');
+const nextBtn = document.getElementById('nextBtn');
+const playBtn = document.getElementById('playBtn');
+const cta = document.getElementById('cta');
+
+function renderMeter(){
+  const fill = document.getElementById('barFill');
+  if(idx < 0){
+    document.getElementById('ratingName').textContent = "💩 FULL SEPTIC";
+    document.getElementById('ratingStep').textContent = "No chain yet";
+    document.getElementById('degCount').textContent = "—";
+    fill.style.width = "4%"; fill.style.background = "#ff2222";
+    document.getElementById('ratingWhy').textContent = "Right now this is an untagged claim — words with no road behind them. The Filter flushes those. Add the first tag.";
+    return;
+  }
+  const s = STEPS[idx];
+  document.getElementById('ratingName').textContent = s.rating;
+  document.getElementById('ratingStep').textContent = s.step;
+  document.getElementById('degCount').textContent = s.deg;
+  fill.style.width = s.pct + "%"; fill.style.background = s.color;
+  document.getElementById('ratingWhy').textContent = s.why;
+}
+function advance(){
+  if(idx >= STEPS.length - 1){ stopPlay(); return; }
+  idx++;
+  const s = STEPS[idx];
+  const d = document.createElement('div');
+  d.className = 'link' + (idx === STEPS.length - 1 ? ' world' : '');
+  d.innerHTML = `<div class="deg">${s.deg}</div>
+    <h3>${s.name}<span class="role">${s.role}</span></h3>
+    <div class="meta">🕕 ${s.time}</div>
+    <p><b>How this link holds:</b> ${s.knows}</p>
+    <p style="margin-top:5px">${s.said}</p>`;
+  chainEl.appendChild(d);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>d.classList.add('show')));
+  renderMeter();
+  nextBtn.textContent = s.btn;
+  if(idx === STEPS.length - 1){
+    nextBtn.disabled = true;
+    cta.classList.add('show');
+    stopPlay();
+    cta.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
+function stopPlay(){ if(timer){ clearInterval(timer); timer = null; playBtn.textContent = "▶ Auto-play"; } }
+function reset(){
+  stopPlay(); idx = -1; chainEl.innerHTML = ""; cta.classList.remove('show');
+  nextBtn.disabled = false; nextBtn.textContent = "File the report — tag 0° →";
+  renderMeter();
+}
+nextBtn.addEventListener('click', advance);
+document.getElementById('resetBtn').addEventListener('click', reset);
+playBtn.addEventListener('click', ()=>{
+  if(timer){ stopPlay(); return; }
+  if(idx >= STEPS.length - 1) reset();
+  playBtn.textContent = "⏸ Pause";
+  advance();
+  timer = setInterval(()=>{ if(idx >= STEPS.length - 1){ stopPlay(); } else { advance(); } }, 2200);
+});
+renderMeter();
+</script>
+</body>
+</html>
